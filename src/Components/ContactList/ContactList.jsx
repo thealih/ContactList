@@ -1,10 +1,17 @@
 /* eslint-disable react/prop-types */
 import "./contactList.css";
 import userImage from "../../assets/images/user-profile-icon-free-vector.jpg";
+import { Link } from "react-router-dom";
 
 const ContactList = ({ contacts, onDelete }) => {
   return (
     <section className="contactList">
+      <div>
+        <h2>Contacts</h2>
+        <Link to="/add">
+          <button>Add</button>
+        </Link>
+      </div>
       {contacts.map((contact) => {
         const { name, email, id } = contact;
         return (
