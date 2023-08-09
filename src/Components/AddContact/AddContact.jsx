@@ -17,7 +17,7 @@ const AddContact = ({ addContactHandler, history }) => {
     addContactHandler(contact);
     setContact({ name: "", email: "" });
     // eslint-disable-next-line react/prop-types
-    history.push("/");
+    // history.push("/");
   };
 
   return (
