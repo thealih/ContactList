@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Contact = ({ contact, onDelete }) => {
   // eslint-disable-next-line react/prop-types
 
+  // eslint-disable-next-line react/prop-types
   const { name, email, id } = contact;
   return (
     <div key={id} className="item">
@@ -17,10 +18,11 @@ const Contact = ({ contact, onDelete }) => {
           </div>
         </Link>
       </div>
-      <Link to={`/edit/${id}`}>
-        <button> Edit</button>
-      </Link>
       <div>
+        <Link to={`/edit/${id}`}>
+          <button className="editBtn"> Edit</button>
+        </Link>
+
         <button onClick={() => onDelete(id)}>delete</button>
       </div>
     </div>

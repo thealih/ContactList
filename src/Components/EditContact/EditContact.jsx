@@ -1,31 +1,33 @@
-import { useState } from "react";
-import "./addContact.css";
-import addOneContacts from "../../services/addContactService";
+import { useEffect, useState } from "react";
+import getOneContacts from "../../services/getOneContact";
 
 // eslint-disable-next-line react/prop-types
-const AddContact = () => {
+const EditContact = ({ addContactHandler }) => {
   const [contact, setContact] = useState({ name: "", email: "" });
   const changeHandler = (e) => {
     setContact({ ...contact, [e.target.name]: e.target.value });
   };
 
-  const submitForm = async (e) => {
+  const submitForm = (e) => {
     if (!contact.name || !contact.email) {
       alert("all fildes are mandatory !");
       return;
     }
     e.preventDefault();
-    // addContactHandler(contact);
-    try {
-      await addOneContacts(contact);
-      setContact({ name: "", email: "" });
-    } catch (error) {
-      console.log(error);
-    }
+    addContactHandler(contact);
+    setContact({ name: "", email: "" });
     // eslint-disable-next-line react/prop-types
     // history.push("/");
   };
 
+  // useEffect(() => {
+  //   localFetch = async () => {
+  //     try {
+  //       const { data } = await getOneContacts();
+  //       setContact({ name: data.name, email: data.email });
+  //     } catch (error) {}
+  //   };
+  // }, []);
   return (
     <form action="" onSubmit={submitForm}>
       <div className="formControl">
@@ -51,4 +53,4 @@ const AddContact = () => {
   );
 };
 
-export default AddContact;
+export default EditContact;
